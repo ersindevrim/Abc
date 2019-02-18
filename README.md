@@ -1,1 +1,1 @@
-eticaret
+Entity framework and mvc basic example for beginners
