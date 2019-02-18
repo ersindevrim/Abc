@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Entity.Product>
+
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+<div class="container pb-5">
+    <h2>Ürün Listesi</h2>
+
+    <p>
+        @Html.ActionLink("Yeni Ürün", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </th>
+            <th style="width: 50%">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsApproved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHome)
+            </th>
+            <th style="width: 12%"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="/Upload/@item.Image" width="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+
+
+                </td>
+                <td>
+                    <!--notlar 1-->
+                    @if (item.Name.Length > 65)
+                    {
+                        <label data-toggle="tooltip" data-placement="bottom" title="@Html.DisplayFor(modelItem => item.Name)">
+                            @Html.DisplayFor(modelItem => item.Name).ToString().Substring(0, 65)
+                        </label>
+                    }
+                    else
+                    {
+                        <label data-toggle="tooltip" data-placement="bottom" title="@Html.DisplayFor(modelItem => item.Name)">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </label>
+                    }
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <center>
+                        @if (item.IsApproved)
+                        {
+                            <span class="badge badge-success">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                        }
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        @if (item.IsHome)
+                        {
+                            <span class="badge badge-success">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                        }
+                    </center>
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

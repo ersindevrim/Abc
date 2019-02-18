@@ -1,0 +1,14 @@
+﻿//1
+                    @if (item.Name.Length > 66)
+                    {
+                        <label data-toggle="tooltip" data-placement="bottom" title="@Html.DisplayFor(modelItem => item.Name)">
+                            @Html.DisplayFor(modelItem => item.Name).ToString().Substring(0, 66)
+                        </label>
+                    }
+                    else
+                    {
+                        <label data-toggle="tooltip" data-placement="bottom" title="@Html.DisplayFor(modelItem => item.Name)">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </label>
+                    }
+					///////

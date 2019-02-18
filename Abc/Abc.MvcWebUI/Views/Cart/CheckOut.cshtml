@@ -1,0 +1,62 @@
+﻿@model Abc.MvcWebUI.Models.ShippingDetails
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+
+<div class="container">
+    <h2>Sipariş Bilgileriniz</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Kullanıcı Adı</label>
+                            @Html.TextBoxFor(x => x.UserName, htmlAttributes: new { @class = "form-control", @Value = @User.Identity.Name, @readonly = true })
+                        </div>
+                        <div class="form-group col-md-6">
+                        </div>
+
+                    </div> <!--Ad Soyad-->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAdressName">Adres Başlığı</label>
+                            @Html.TextBoxFor(x => x.AdresBasligi, htmlAttributes: new { @class = "form-control", placeholder = "Ev / İş" })
+                        </div>
+                        <div class="form-group col-md-6">
+                        </div>
+                    </div> <!-- Adres Basligi -->
+
+                    <div class="form-group">
+                        <label for="inputAddress">Addres</label>
+                        @Html.TextBoxFor(x => x.Adres, htmlAttributes: new { @class = "form-control", placeholder = "Adres Bilgileri" })
+                    </div> <!-- Adres -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputCity">Şehir</label>
+                            @Html.TextBoxFor(x => x.Sehir, htmlAttributes: new { @class = "form-control", placeholder = "Ankara" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputCity">İlçe</label>
+                            @Html.TextBoxFor(x => x.Ilce, htmlAttributes: new { @class = "form-control", placeholder = "Çankaya" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputCity">Mahalle</label>
+                            @Html.TextBoxFor(x => x.Mahalle, htmlAttributes: new { @class = "form-control", placeholder = "Mebusevleri Mh." })
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCity">Posta Kodu</label>
+                            @Html.TextBoxFor(x => x.PostaKodu, htmlAttributes: new { @class = "form-control", placeholder = "06580" })
+                        </div>
+                    </div> <!-- Adres Detay-->
+
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
